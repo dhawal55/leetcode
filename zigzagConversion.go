@@ -6,38 +6,8 @@ func main() {
 	fmt.Println(convert("PAYPALISHIRING", 3))
 }
 
-// func convert(s string, numRows int) string {
-//     rows := make([]string, numRows)
-
-//     if numRows == 1 {
-//         return s
-//     }
-
-//     goingDown := false
-//     curRow := 0
-//     inputRune := []rune(s)
-
-//     for _, r := range inputRune {
-//         if curRow == 0 || curRow == numRows -1 {
-//             goingDown = !goingDown
-//         }
-
-//         rows[curRow] = rows[curRow] + string(r)
-//         if goingDown {
-//             curRow++
-//         } else {
-//             curRow--
-//         }
-//     }
-
-//     var output string
-//     for _, v := range rows {
-//         output = output + v
-//     }
-
-//     return output
-// }
-
+// Time Complexity: O(n), n is len of string. Each index is visited once.
+// Space Complexity: O(n) or O(1) if return string is not considered extra space
 func convert(s string, numRows int) string {
 	if numRows == 1 {
 		return s

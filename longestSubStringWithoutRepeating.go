@@ -24,6 +24,9 @@ func main() {
 	fmt.Println(lengthOfLongestSubstring(input))
 }
 
+// Sliding window
+// Time complexity : O(2n) = O(n).
+// Space complexity : O(min(m,n)).
 func lengthOfLongestSubstring(s string) int {
 	charMap := make(map[byte]bool)
 

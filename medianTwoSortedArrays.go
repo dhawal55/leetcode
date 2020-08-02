@@ -12,21 +12,104 @@ func main() {
 	fmt.Println(findMedianSortedArrays(a, b))
 }
 
+// Time Complexity: O(min(m, n))
+// Space Complexity: O(min(m+n))
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	return (median(nums1) + median(nums2)) / 2.0
-}
-
-func median(nums []int) float64 {
-	if len(nums) == 0 {
+	i, j := len(nums1)-1, len(nums2)-1
+	if i < 0 && j < 0 {
 		return 0
 	}
 
-	var median float64
-	if len(nums)%2 == 0 {
-		median = float64(nums[len(nums)/2]+nums[len(nums)/2-1]) / 2.0
+	var mergedArray []int
+	if i < 0 {
+		mergedArray = nums2
+	} else if j < 0 {
+		mergedArray = nums1
+	} else if nums1[0] > nums2[0] {
+		mergedArray = append(nums2, nums1...)
 	} else {
-		median = float64(nums[len(nums)/2])
+		mergedArray = append(nums1, nums2...)
 	}
 
-	return median
+	for i >= 0 && j >= 0 {
+		if nums1[i] > nums2[j] {
+			mergedArray[i+j+1] = nums1[i]
+			i--
+		} else {
+			mergedArray[i+j+1] = nums2[j]
+			j--
+		}
+	}
+
+	if len(mergedArray)%2 == 0 {
+		return float64(mergedArray[len(mergedArray)/2]+mergedArray[len(mergedArray)/2-1]) / 2.0
+	} else {
+		return float64(mergedArray[len(mergedArray)/2])
+	}
+}
+
+// Time complexity: O(log(min(m,n)))
+// Space Complexity: O(1)
+func findMedianSortedArrays2(nums1 []int, nums2 []int) float64 {
+	m := len(nums1)
+	n := len(nums2)
+
+	if m > n {
+		m, n = n, m
+		nums1, nums2 = nums2, nums1
+	}
+
+	min, max := 0, m
+
+	for min <= max {
+		i := (min + max) / 2
+		j := (m+n+1)/2 - i
+
+		if i < max && nums2[j-1] > nums1[i] { // i is too small
+			min = i + 1
+		} else if i > min && nums1[i-1] > nums2[j] { // i is too big
+			max = i - 1
+		} else { // i is perfect
+			maxLeft := 0
+			if i == 0 {
+				maxLeft = nums2[j-1]
+			} else if j == 0 {
+				maxLeft = nums1[i-1]
+			} else {
+				maxLeft = findMax(nums1[i-1], nums2[j-1])
+			}
+
+			if (m+n)%2 == 1 {
+				return float64(maxLeft)
+			}
+
+			minRight := 0
+
+			if i == m {
+				minRight = nums2[j]
+			} else if j == n {
+				minRight = nums1[i]
+			} else {
+				minRight = findMin(nums1[i], nums2[j])
+			}
+
+			return float64(maxLeft+minRight) / 2.0
+		}
+	}
+
+	return 0.0
+}
+
+func findMax(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func findMin(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }

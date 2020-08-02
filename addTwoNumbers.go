@@ -49,6 +49,8 @@ func main() {
 	fmt.Println(out)
 }
 
+// Time Complexity: O(m), where m is greater of length of the 2 lists
+// Space Complexity: O(m)
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	if l1 == nil && l2 == nil {
 		return nil

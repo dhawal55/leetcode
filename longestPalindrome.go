@@ -12,6 +12,11 @@ func main() {
 	fmt.Println(longestPalindrome(s))
 }
 
+// Expand around center
+// Time Complexity:  O(n^2)
+// Space Complexity: O(1)
+
+// TODO: O(n) Non-trivial Machester algo
 func longestPalindrome(input string) string {
 	if len(input) == 0 {
 		return ""
