@@ -12,6 +12,7 @@ func main() {
 
 // Time Complexity: O(nlogn + n^2) = O(n^2) (sort operation doesn't change overall time complexity)
 // Space Complexity: O(n) to O(logn) for sort algo
+// Two Pointer for 2Sum
 func threeSum(nums []int) [][]int {
 	if len(nums) < 3 {
 		return nil

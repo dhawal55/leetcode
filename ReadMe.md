@@ -6,4 +6,5 @@ Solved 4/1533
 ## Aug 1, 2020
 Solved 11/1533
 
-
+## Aug 3, 2020
+Solved 15/1533

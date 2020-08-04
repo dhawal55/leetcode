@@ -8,6 +8,7 @@ func main() {
 }
 
 // Time Complexity: O(n)
+// Two Pointer
 func maxArea(height []int) int {
 	left, right := 0, len(height)-1
 	max := 0
