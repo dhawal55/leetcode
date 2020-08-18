@@ -32,7 +32,7 @@ func buildCombinationSum2(candidates []int, target int, combination []int) [][]i
 		copy(newCombination, combination)
 		newCombination[len(combination)] = candidates[i]
 
-		if target-candidates[i] == 0 {
+		if target - candidates[i] == 0 {
 			result = append(result, newCombination)
 		} else {
 			result = append(result, buildCombinationSum2(candidates[i+1:], target-candidates[i], newCombination)...)
