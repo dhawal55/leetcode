@@ -26,12 +26,11 @@ func main() {
 
 // Sliding window
 // Time complexity : O(2n) = O(n).
-// Space complexity : O(min(m,n)).
+// Space complexity : O(n)
 func lengthOfLongestSubstring(s string) int {
-	charMap := make(map[byte]bool)
+	charMap := make(map[byte]struct{})
 
-	var left, right int
-	var max int
+	var left, right, max int
 	for right < len(s) {
 		if _, ok := charMap[s[right]]; ok {
 			if right-left > max {
@@ -41,13 +40,37 @@ func lengthOfLongestSubstring(s string) int {
 			delete(charMap, s[left])
 			left++
 		} else {
-			charMap[s[right]] = true
+			charMap[s[right]] = struct{}{}
 			right++
 		}
 	}
 
 	if right-left > max {
 		max = right - left
+	}
+
+	return max
+}
+
+// Time complexity : O(n). Index right will iterate n times.
+// Space complexity: O(min(m,n)). We need O(k) space for checking a substring has no duplicate characters, where k is the size of the charArr. The size of the array is upper bounded by the size of the string n and the size of the charset/alphabet m.
+func lengthOfLongestSubstring(s string) int {
+	// [26]int for letters 'a' - 'z' or 'A' - 'Z'
+	// [128]int for ASCII
+	// [256]int fot Extended ASCII
+	var charArr [128]int
+
+	var left, right, max int
+	for right < len(s) {
+		if charArr[s[right]] > left {
+			left = charArr[s[right]]
+		}
+
+		if right-left+1 > max {
+			max = right - left + 1
+		}
+		charArr[s[right]] = right + 1
+		right++
 	}
 
 	return max

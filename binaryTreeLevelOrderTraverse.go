@@ -40,12 +40,8 @@ func levelOrder(root *TreeNode) [][]int {
 	return result
 }
 
-func levelOrder(root *TreeNode) [][]int {
-	if root == nil {
-		return nil
-	}
-
-	result := 
+func levelOrderRecurse(root *TreeNode) [][]int {
+	return getLevelOrder(root, nil)
 }
 
 func getLevelOrder(node *TreeNode, result [][]int) [][]int {
