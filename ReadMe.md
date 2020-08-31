@@ -7,22 +7,25 @@ Solved 4/1533
 Solved 11/1533
 
 ## Aug 3, 2020
-Solved 15/1533
+Solved 14/1533
 
 ## Aug 10, 2020
-Solved 22/1533
+Solved 21/1533
 
 ## Aug 15, 2020
-Solved 25/1533
+Solved 24/1533
 
 ## Aug 16, 2020
-Solved 29/1533
+Solved 28/1533
 
 ## Aug 17, 2020
-Solved 33/1533
+Solved 31/1533
 
 ## Aug 22, 2020
-Solved 41/1533
+Solved 39/1533
 
 ## Aug 29, 2020
-Solved 50/1533            
+Solved 49/1533  
+
+## Aug 30, 2020
+Solved 52/1533 
