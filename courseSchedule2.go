@@ -18,6 +18,8 @@ const WHITE = 0
 const GREY = 1
 const BLACK = 2
 
+// Time Complexity: O(N) considering there are N courses in all. We essentially perform a complete depth first search covering all the nodes in the forest. It's a forest and not a graph because not all nodes will be connected together. There can be disjoint components as well.
+// Space Complexity: O(N), the space utilized by the recursion stack (not the stack we used to maintain the topologically sorted order)
 func findOrderDFS(numCourses int, prerequisites [][]int) []int {
 	adjacentList := make(map[int][]int)
 	color := make([]int, numCourses)

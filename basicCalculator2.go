@@ -3,6 +3,9 @@ package main
 import "fmt"
 
 func main() {
+	fmt.Println(calculate("3*-2"))
+	fmt.Println(calculateWithoutStack("3*-2"))
+	fmt.Println(calculate("3*2"))
 	fmt.Println(calculate("1-1+1"))
 	fmt.Println(calculate("   3  / 2 + 1    * 6  "))
 }
@@ -68,11 +71,10 @@ func calculateWithoutStack(s string) int {
 			if s[i] == '-' {
 				add = -1
 			}
-		} else if s[i] == '*' || s[i] == '/' {
+		} else if s[i] == '*' {
 			mul = 1
-			if s[i] == '/' {
-				mul = -1
-			}
+		} else if s[i] == '/' {
+			mul = -1
 		}
 	}
 

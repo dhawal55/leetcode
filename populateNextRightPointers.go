@@ -1,3 +1,5 @@
+package main
+
 func connect(root *Node) *Node {
 	if root == nil {
 		return nil

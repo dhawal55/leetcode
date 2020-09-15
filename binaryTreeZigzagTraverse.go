@@ -1,3 +1,5 @@
+package main
+
 func zigzagLevelOrder(root *TreeNode) [][]int {
 	if root == nil {
 		return nil

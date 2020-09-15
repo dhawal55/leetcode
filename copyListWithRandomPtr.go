@@ -1,3 +1,5 @@
+package main
+
 func copyRandomList(head *Node) *Node {
 	listMapping := make(map[*Node]*Node)
 

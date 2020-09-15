@@ -21,6 +21,7 @@ func largestNumber(nums []int) string {
 	sort.Slice(nums, func(i, j int) bool {
 		return fmt.Sprintf("%v%v", nums[i], nums[j]) > fmt.Sprintf("%v%v", nums[j], nums[i])
 	})
+	
 	if nums[0] == 0 {
 		return "0"
 	}

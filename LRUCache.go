@@ -1,3 +1,5 @@
+package main
+
 type Dequeue struct {
 	prev  *Dequeue
 	next  *Dequeue

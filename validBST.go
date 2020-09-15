@@ -1,3 +1,5 @@
+package main
+
 func isValidBST(root *TreeNode) bool {
 	return traverse(root, nil, nil)
 }

@@ -1,3 +1,5 @@
+package main
+
 func inorderTraversalRecursive(root *TreeNode) []int {
 	var result []int
 
@@ -10,7 +12,6 @@ func inorderTraversalRecursive(root *TreeNode) []int {
 	result = append(result, inorderTraversal(root.Right)...)
 
 	return result
-
 }
 
 func inorderTraversal(root *TreeNode) []int {

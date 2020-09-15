@@ -1,7 +1,9 @@
+package main
+
 const ALPHABET_SIZE = 26
 
 type Trie struct {
-	children    []*Trie // Use map if strings are long and some letters are rarely used or alphabet is much larger than 26 chars
+	children    []*Trie // Use hashMap if strings are long and some letters are rarely used or alphabet is much larger than 26 chars
 	isEndOfWord bool
 }
 

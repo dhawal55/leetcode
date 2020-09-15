@@ -1,3 +1,5 @@
+package main
+
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -58,4 +60,3 @@ func mergeList(l1, l2 *ListNode) *ListNode {
 
 	return dummy.Next
 }
-

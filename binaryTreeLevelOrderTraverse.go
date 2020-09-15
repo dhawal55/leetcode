@@ -1,3 +1,5 @@
+package main
+
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
@@ -12,7 +14,7 @@ func levelOrder(root *TreeNode) [][]int {
 	}
 
 	queue := []*TreeNode{root, nil}
-	var current []int
+	var levelArr []int
 	var result [][]int
 
 	for len(queue) > 0 {
@@ -20,7 +22,7 @@ func levelOrder(root *TreeNode) [][]int {
 		queue = queue[1:]
 
 		if node != nil {
-			current = append(current, node.Val)
+			levelArr = append(levelArr, node.Val)
 			if node.Left != nil {
 				queue = append(queue, node.Left)
 			}
@@ -28,8 +30,8 @@ func levelOrder(root *TreeNode) [][]int {
 				queue = append(queue, node.Right)
 			}
 		} else {
-			result = append(result, current)
-			current = nil
+			result = append(result, levelArr)
+			levelArr = nil
 
 			if len(queue) > 0 {
 				queue = append(queue, nil)
@@ -41,17 +43,24 @@ func levelOrder(root *TreeNode) [][]int {
 }
 
 func levelOrderRecurse(root *TreeNode) [][]int {
-	return getLevelOrder(root, nil)
+	return getLevelOrder(root, 0, nil)
 }
 
-func getLevelOrder(node *TreeNode, result [][]int) [][]int {
+func getLevelOrder(node *TreeNode, level int, result [][]int) [][]int {
 	if root == nil {
 		return nil
 	}
 
-	result = append(result, []int{node.Val})
-	result = getLevelOrder(node.Left, result)
-	result = getLevelOrder(node.Right, result)
+	if level >= len(result) {
+		result = append(result, []int{node.Val})
+	} else {
+		levelArr := result[level]
+		levelArr = append(levelArr, node.Val)
+		result[level] = levelArr
+	}
+
+	result = getLevelOrder(node.Left, level+1, result)
+	result = getLevelOrder(node.Right, level+1, result)
 
 	return result
 }
