@@ -35,3 +35,6 @@ Solved 59/1533
 
 ## Sept 07,2020
 Solved 65/1533
+
+## Sept 21,2020
+Solved 72/1533

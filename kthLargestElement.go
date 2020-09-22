@@ -19,22 +19,20 @@ func findKthLargest(nums []int, k int) int {
 	}
 
 	quickSort(nums, 0, len(nums)-1, k)
-	return nums[len(nums)-k]
+	return nums[k-1]
 }
 
-func quickSort(nums []int, low, high, k int) int {
+func quickSort(nums []int, low, high, k int) {
 	if low < high {
 		pivot := partition(nums, low, high)
-		if pivot == len(nums)-k {
-			return nums[pivot]
-		} else if pivot > len(nums)-k {
+		if pivot == k-1 {
+			return
+		} else if pivot > k-1 {
 			quickSort(nums, low, pivot-1, k)
 		} else {
 			quickSort(nums, pivot+1, high, k)
 		}
 	}
-
-	return 0
 }
 
 func partition(nums []int, low, high int) int {
@@ -43,7 +41,7 @@ func partition(nums []int, low, high int) int {
 
 	nums[pivot], nums[high] = nums[high], nums[pivot]
 	for i := low; i < high; i++ {
-		if nums[i] < nums[high] {
+		if nums[i] > nums[high] {
 			nums[i], nums[low] = nums[low], nums[i]
 			low++
 		}

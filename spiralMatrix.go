@@ -15,6 +15,7 @@ func main() {
 	fmt.Println(spiralOrder(matrix))
 }
 
+// Time Complexity: O(n)
 func spiralOrder(matrix [][]int) []int {
 	if len(matrix) == 0 {
 		return nil
